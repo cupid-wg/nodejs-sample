@@ -1,0 +1,23 @@
+
+<div>
+	<div ng-show="show_list">
+		<table class="table">
+			<thead>
+				<tr>
+					<td><b>title</b></td>
+					<td><b>creater</b></td>
+					<td><b>joiners</b></td>
+					<td><b>expire-date</b></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="x in activities">
+					<td><span ng-click="showdetail(x)">{{ x.title }}</span></td>
+					<td>{{ x.creater }}</td>
+					<td>{{ x.joiners.length }}</td>
+					<td>{{ x['expire-time'] |date: 'yyyy-MM-dd' }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

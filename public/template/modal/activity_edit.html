@@ -1,0 +1,47 @@
+<div class="modal-header">
+	<h4 class="modal-title" id="myModalLabel">Activity</h4>
+</div>
+<div class="modal-body">
+<form name="myForm" class="form-horizontal" novalidate>
+	<div class="form-group">
+        <label title="a short description of the activity" class="control-label  col-sm-2" >Activity Title:</label>
+        <div class="col-sm-10" >
+        	<input class="form-control" type="text" ng-model="activity.title" name="title" required> 
+            <span style="color:red" ng-show="myForm.title.$error.required">Activity title is required</span>
+         </div> 
+    </div>
+	
+    <div class="form-group">
+        <label title="the activity detail description" class="control-label  col-sm-2" >Description:</label>
+        <div class="col-sm-10" >
+        	<textarea rows="3" class="form-control"  ng-model="activity.description" maxlength="2000"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-sm-2" title="The expiration date of the activity, which mean you can't see the activity after the date. It's not the actual date of the activity, you have to specify it in description.">Expire Date:</label>
+        <div class="col-sm-10" >
+            <p class="input-group">
+            <input class="form-control" type="text" uib-datepicker-popup="yyyy-MM-dd" ng-model="activity['expire-time-in-date']" name="expireDate" is-open="popup1.opened" ng-click="open1()" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
+            </p>
+            <span style="color:red" ng-show="myForm.expireDate.$error.required">Expire Date is required</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label title="the max joiners num(not include yourself)" class="control-label col-sm-2" >Max Joiners:</label>
+        <div class=" col-sm-10" >
+        	<input class="form-control" type="text" ng-model="activity['max-joiners']" name="maxJoiners" required>
+            <span style="color:red" ng-show="myForm.maxJoiners.$error.required">Max Joiners is required</span>
+        </div>
+    </div>
+
+	<div class="form-group">
+    	<div class="col-sm-offset-2 col-sm-10">
+			<button class="btn btn-default"
+				ng-click="delete_func(activity._id,cur_user)">delete</button>
+			<button class="btn btn-default"
+				ng-click="myForm.$valid && edit_func(activity._id, cur_user)">save</button>
+			<button class="btn btn-default" ng-click="hide_edit_detail()">cancel</button>
+		</div>
+	</div>
+</form>
+</div>

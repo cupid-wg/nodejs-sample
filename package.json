@@ -1,0 +1,25 @@
+{
+	"name": "NodejsStarterApp",
+	"version": "0.0.1",
+    "private": true,
+	"scripts": {
+		"start": "node app.js"
+	},
+	"dependencies": {
+		"express": "4.13.x",
+		"express-session": "*",
+		"cookie-parser": "*",
+		"cfenv": "1.0.x",
+		"nano": "*",
+		"q": "*",
+		"express-session": "*",
+		"cookie-parser":"*",
+		"body-parser":"*",
+		"nodemailer-wellknown":"*",
+		"nodemailer":"*"
+	},
+	"repository": {},
+	"engines": {
+		"node": "4.4.x"
+	}
+}

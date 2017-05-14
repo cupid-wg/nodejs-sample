@@ -1,0 +1,60 @@
+
+<div  ng-controller="createCtrl" >
+<form name="activityForm" class="form-horizontal" novalidate>
+    <div class="form-group">
+        <label title="a short description of the activity" class="control-label  col-sm-2" >Activity Title:</label>
+        <div class="col-sm-10" > 
+            <input class="form-control" type="text" maxlength="255" ng-model="activityName" name="title" required>
+            <span style="color:red" ng-show="activityForm.title.$error.required">Activity title is required</span>
+         </div> 
+    </div>
+    <div class="form-group">
+        <label title="the activity detail description" class="control-label  col-sm-2" >Description:</label>
+        <div class="col-sm-10" >
+            <textarea rows="3" class="form-control" ng-model="activityDescription" size="100" maxlength="2000" ></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-sm-2" >Tags:</label>
+        <div  class="col-sm-offset-2 col-sm-10 " data-ng-repeat="tag in tags">
+            <div >
+                <input  type="checkbox" id={{tag.id}} name={{tag.name}} ng-checked="isSelected(tag.id)" ng-click="updateSelection($event,tag.id)">
+                {{ tag.name }}
+            </div>
+        </div>
+    </div>
+    <div>
+        <label class="control-label  col-sm-2" title="The expiration date of the activity, which mean you can't see the activity after the date. It's not the actual date of the activity, you have to specify it in description.">Expire Date:</label>
+        <div class="col-sm-10" >
+            <p class="input-group">
+            <input class="form-control" type="text" uib-datepicker-popup="yyyy-MM-dd" ng-model="expireDate" name="expireDate" is-open="popup1.opened" ng-click="open1()" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
+            </p>
+            <span style="color:red" ng-show="activityForm.expireDate.$error.required">Expire Date is required</span>
+        </div>
+    </div>
+           
+    <div class="form-group">
+        <label title="the max joiners num(not include yourself)" class="control-label  col-sm-2" >Max Joiners:</label>
+        <div class="col-sm-10" >
+            <input class="form-control" type="text" ng-model="maxJoiners" name="maxJoiners" required>
+            <span style="color:red" ng-show="activityForm.maxJoiners.$error.required">Max Joiners is required</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label title="a email list divided by comma. You can type the email that you'd like him/her to join. A mail will be sent when activity is created" class="control-label  col-sm-2" >Invite(in email):</label>
+        <div class="col-sm-10" >
+            <input class="form-control" type="text" ng-model="invited_emails" ng-list>
+        </div>
+    </div>
+    <div class="form-group">
+    	<div class="col-sm-offset-2 col-sm-10">
+	        <button class="btn btn-default" ng-click="activityForm.$valid && createActivity()">CREATE</button>
+	        <button class="btn btn-default" ng-click="resetActivity()">CANCEL</button>
+        </div>       
+    </div>
+    </form>
+    <!-- <label>{{testdoc}}</label> -->
+</div>
+
+
+

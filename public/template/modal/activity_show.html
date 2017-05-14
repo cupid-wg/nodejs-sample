@@ -1,0 +1,45 @@
+<!--<script type="text/ng-template" >-->
+<div class="modal-header">
+	<h4 class="modal-title" id="myModalLabel">Activity</h4>
+</div>
+<div class="modal-body">
+	<table class="table">
+		<tr>
+			<td><b>title</b></td>
+			<td>{{ activity.title }}</td>
+		</tr>
+		<tr>
+			<td><b>description</b></td>
+			<td>{{ activity.description }}</td>
+		</tr>
+		<tr>
+			<td><b>creater</b></td>
+			<td>{{ activity.creater }}</td>
+		</tr>
+		<tr>
+			<td><b>expire-date</b></td>
+			<td>{{ activity['expire-time'] |date: 'yyyy-MM-dd' }}</td>
+		</tr>
+		<tr>
+			<td><b>Max Joiners Num</b></td>
+			<td>{{ activity['max-joiners'] }}</td>
+		</tr>
+		<tr>
+			<td><b>joiners</b></td>
+			<td>
+				<ul style="list-style-type: none;">
+					<li ng-repeat="user in activity.joiners_ins">{{ user.name }}</li>
+				</ul>
+			</td>
+		</tr>
+	</table>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-default" ng-show="show_leave"
+		ng-click="leave_func(activity._id,cur_user)">leave</button>
+	<button class="btn btn-default" ng-show="show_join"
+		ng-click="join_func(activity._id, cur_user)">join</button>
+	<button class="btn btn-default" ng-click="hidedetail()">cancel</button>
+</div>
+
+<!-- </script>-->

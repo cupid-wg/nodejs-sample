@@ -1,0 +1,49 @@
+<div class="modal-header">
+	<h4 class="modal-title">Edit</h4>
+</div>
+
+<ng-form name="registerForm" novalidate>
+<div class="modal-body">
+	
+	<table class="table">
+		<tr>
+			<td><b>userid</b></td>
+			<td>{{ user.userid }}
+			</td>
+		</tr>
+		<tr>
+			<td><b>old password</b></td>
+			<td><input type="password" ng-model="user.old_password">
+			</td>
+		</tr>
+		<tr>
+			<td><b>new password</b></td>
+			<td><input type="password" ng-model="user.new_password"></td>
+		</tr>
+		<tr>
+			<td><b>confirm password</b></td>
+			<td><input type="password" ng-model="user.conf_password" name="conf_password" data-password-verify="user.new_password" >
+			<span style="color:red" data-ng-show="registerForm.conf_password.$error.passwordVerify">please confirm the 2 password is the same</span></td>
+		</tr>
+		<tr>
+			<td><b>user name</b></td>
+			<td><input type="text" ng-model="user.name" name="username" required>
+			<span style="color:red" data-ng-show="registerForm.username.$error.required">user's nick name is required</span></td>
+		</tr>
+		<tr>
+			<td><b>email</b></td>
+			<td><input type="text" ng-model="user.email" name="email" required>
+			<span style="color:red" data-ng-show="registerForm.email.$error.required">user's email is required</span></td>
+		</tr>
+	</table>
+	<span style="color: red" ng-show="edit_failed">{{ error_message }}</span>
+	
+</div>
+<div class="modal-footer">
+	<button class="btn btn-default pull-left"
+		ng-click="unregister_func()">Unregister</button>
+	<button class="btn btn-default"
+		ng-click="registerForm.$valid && edit_func()">Save</button>
+	<button class="btn btn-default" ng-click="hide()">cancel</button>
+</div>
+</ng-form>
